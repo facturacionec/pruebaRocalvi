@@ -66,40 +66,48 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content"> 
                 <div class="modal-body">
-                <div id="example" class="k-content">
+                <div id="example" class="container-fluid">
                     @php
                      $indice = 1;
                     @endphp
 
 
-                  <table>
-                        @foreach ($list_empleado as $empleado)                     
-                        <tr>
-                            <td>
-                                <div >
-                                    <strong>{{ $empleado->nombre1 ?? old('') }}  {{ $empleado->apellido1 ?? old('') }}</strong></div>
-                                    <div>{{ $empleado->cargo->descripcion ?? old('') }}  </div>
-                                    <div> 
-                                        <i class="fa fa-envelope"></i>    
-                                        {{ $empleado->correo ?? old('') }}  
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-mobile-alt"></i>    
-                                        {{ $empleado->telefono ?? old('') }}  
-                                    </div>               
-                            </td>  
-                            <td>
-                                <div id="qr-empleado-{{ $indice }}"></div> 
-                            
-                            </td>  
-                        
-                        </tr>
-                     @php
-                        $indice++;
-                    @endphp
-                    @endforeach
+                    @foreach ($list_empleado as $empleado)                     
                     
-                    </table>
+                    <div class="row">
+                        <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto">
+                                    <div class="text-capitalize" style="font-family: 'Calibri', serif; font-size: 20px;" > 
+                                    
+                                    <strong>{{ $empleado->nombre1 ?? old('') }}  {{ $empleado->apellido1 ?? old('') }}</strong> 
+                                </div>
+                                <div class="text-uppercase">{{ $empleado->cargo->descripcion ?? old('') }}  </div>
+                                <div> 
+                                    <i class="fa fa-envelope"></i>    
+                                    {{ $empleado->correo ?? old('') }}  
+                                </div>
+                                <div>
+                                    <i class="fa fa-phone-alt"></i>    
+                                    {{ $empleado->telefono ?? old('') }}  
+                                </div>                                    
+                                <div>
+                                    <i class="fa fa-mobile-alt"></i>    
+                                    {{ $empleado->telcel ?? old('') }}  
+                                </div>                                       
+                            </div>                          
+                            <div id="qr-empleado-{{ $indice }}" class="col-md-4 ml-auto">
+
+                            </div>                             
+                        </div> 
+                        </div>                           
+                    </div>  
+                        @php
+                            $indice++;
+                        @endphp
+                    @endforeach
+                
+                
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
